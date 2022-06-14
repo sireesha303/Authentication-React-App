@@ -1,9 +1,18 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import './index.css'
 
 const Login = () =>{
     const [userName,setUserName] =useState();
     const [passWord,setPassWord] = useState();
+    const [loginError,setLoginError] = useState({showLoginError:false,
+    loginErrorMsg:""
+    });
+
+
+
+    const navigate = useNavigate();
 
     const onChangeOfUserName = (event) => {
         // console.log(event.target.value);
@@ -14,23 +23,36 @@ const Login = () =>{
     const onChangeOfPassword = (event) => {
         setPassWord(event.target.value)
     }
+
+    const onLoginSuccess = () =>{
+        navigate("/");
+    }
+
+    const onLoginFailure = (errorMsg) => {
+        setLoginError({showLoginError:true,loginErrorMsg:errorMsg})
+    }
+
     const submitLoginForm = async (event) => {
         event.preventDefault();
-        // const {username, password} = this.state
-        console.log(userName)
-        console.log(passWord)
-        const userDetails = {userName, passWord}
-        const url = 'https://apis.ccbp.in/login'
-        const options = {
-        method: 'POST',
-        headers: {
-            mode: 'no-cors'
-        },
-        body: JSON.stringify(userDetails),
+        const url = 'https://apis.ccbp.in/login/'
+        
+        // console.log(userName);
+        // console.log(passWord);
+
+        const requestOptions = {
+            method: 'POST',
+            body: JSON.stringify({ username:userName,password:passWord})
+        };
+        const response = await fetch(url, requestOptions);
+        console.log(response);
+        const data = await response.json();
+        console.log(data);
+        if(response.ok === true){
+            onLoginSuccess()
         }
-        const response = await fetch(url, options)
-        const data = await response.json()
-        console.log(data)
+        else{
+            onLoginFailure(data.error_msg)
+        }
 
     }
 
@@ -87,7 +109,7 @@ const Login = () =>{
                 <button className='login-btn' type="submit">
                     Login
                 </button>
-                
+                {loginError.showLoginError && <p className='login-error-msg'>* {loginError.loginErrorMsg}</p>}
             </form>
         </div>
     )

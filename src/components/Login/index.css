@@ -89,3 +89,9 @@
     color: white;
     border-radius: 4PX;
 }
+
+.login-error-msg{
+    font-size: 15px;
+    font-family: 'roboto';
+    color: red;
+}
