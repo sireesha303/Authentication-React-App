@@ -1,0 +1,91 @@
+.logo-mobile-view-img{
+    height:100px;
+    width: 150px;
+}
+
+@media screen and (min-width:768px){
+    .logo-mobile-view-img{
+        display: none;
+    }
+}
+
+.login-page-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    overflow: auto;
+}
+
+@media screen and (min-width:768px){
+    .login-page-container{
+        display: flex;
+        flex-direction: row;
+        /* justify-content: center; */
+        align-items: center;
+        margin: 30px;
+    }
+}
+
+.login-image{
+    height:250px;
+    width: 300px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+@media screen and (min-width:768px){
+    .login-image{
+        height:300px;
+        width: 380px;
+        margin-right: 40px;
+    }
+}
+
+.form-container{
+    padding: 50px;
+    box-shadow: 2px 2px 5px 3px #888888;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logo-desktop-view-img{
+    height:200px;
+    width:200px;
+}
+
+@media screen and (max-width:768px){
+    .logo-desktop-view-img{
+       display: none;
+    }
+}
+.logo-desktop-view-img{
+    height:90px;
+    width:200px;
+}
+
+.input-container{
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+}
+
+.user-name{
+    padding: 5px;
+    border:2px solid black;
+    margin-top: 4px;
+    /* text-align: center; */
+}
+
+.label{
+    font-family: 'roboto';
+    font-weight: bold;
+}
+
+.login-btn{
+    padding: 8px;
+    background-color: cadetblue;
+    color: white;
+    border-radius: 4PX;
+}
