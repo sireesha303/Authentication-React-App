@@ -90,12 +90,12 @@ const Login = () =>{
         )
     }
 
-     useEffect(()=>{
+    useEffect(()=>{
          const jwtTokenFromCookie = Cookies.get('jwt_token');
          if(jwtTokenFromCookie !== undefined){
              setLoginStatus(true);
          }  
-     },[]);
+    },[]);
     
     switch(isLoogedIn){
         case true:
